@@ -30,7 +30,8 @@ while rejtett_szo_betuk != megoldas:
         elif tipp_lista[i] != rejtett_szo_betuk[i]:
             megoldas.append(".")
     print(f"Az eredmény:", *megoldas)
-    # // bicska - babona
     szamlalo += 1
+print(f"\n{szamlalo} tippeléssel sikerült kitalálni")
+
 
     # HÁZI: STOP ÉS SZÁMLÁLÓ

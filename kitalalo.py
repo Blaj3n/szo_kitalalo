@@ -22,6 +22,11 @@ while rejtett_szo_betuk != megoldas:
     megoldas = []
     tipp = input(f"Kérem a tippet: ")
     tipp_lista = []
+    if tipp == "stop":
+        break
+    if len(tipp) != 6:
+        print("A tippnek pontosan hatbetűsnek kell lennie.")
+        continue
     for egyelem in tipp:
         tipp_lista.append(egyelem)
     for i in range(0, len(rejtett_szo_betuk)):
@@ -34,4 +39,4 @@ while rejtett_szo_betuk != megoldas:
 print(f"\n{szamlalo} tippeléssel sikerült kitalálni")
 
 
-    # HÁZI: STOP ÉS SZÁMLÁLÓ
+    # HÁZI: STOP

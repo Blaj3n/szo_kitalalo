@@ -17,6 +17,8 @@ for egyelem in rejtett_szo:
 szamlalo = 0
 megoldas = []
 jatek_vege = False  # Alapértelmezett érték False, mert a játék elején még nem ért véget
+# A logikai változót azért állítjuk be alapértelmezetten False-ra, mert az jelzi, hogy egy adott esemény
+# még nem következett be.
 
 while rejtett_szo_betuk != megoldas:
     megoldas = []
@@ -25,19 +27,24 @@ while rejtett_szo_betuk != megoldas:
     if tipp == "stop":
         jatek_vege = True  # Ha a felhasználó "stop"-ot ír be, akkor a játék véget ér
         break
-    elif len(tipp) != 6:
+    elif len(tipp) != 6: # != nem egyenlő
         print("A tippnek pontosan hatbetűsnek kell lennie.")
         continue
     else:
         for egyelem in tipp:
             tipp_lista.append(egyelem)
-        for i in range(0, len(rejtett_szo_betuk)):
+        for i in range(0, len(rejtett_szo_betuk)):  # [x, y[ -> 0-tól el fog menni 5-ig, mert ugye előbb megvizsgáltad, hogy a len(tipp) == 6.
             if tipp_lista[i] == rejtett_szo_betuk[i]:
                 megoldas.append(tipp_lista[i])
             elif tipp_lista[i] != rejtett_szo_betuk[i]:
                 megoldas.append(".")
-        print(f"Az eredmény:", *megoldas)
+        print(f"Az eredmény: ", end="")
+        for egyelem in megoldas:
+            print(egyelem, end="")
+        print("\n")
         szamlalo += 1
 
 if not jatek_vege:  # Csak akkor írja ki a tippelések számát, ha a játék nem ért véget idő előtt
-    print(f"\n{szamlalo} tippeléssel sikerült kitalálni")
+    print(f"{szamlalo} tippeléssel sikerült kitalálni. ")
+if jatek_vege:
+    print(f"A megfejtés: {rejtett_szo} ")
